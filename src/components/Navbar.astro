@@ -1,34 +1,16 @@
 ---
 import ModeToggler from "./ModeToggler";
-
-type Route = {
-  name: string;
-  href: string;
-}
-
-const routes: Route[] = [{
-  name: 'Home',
-  href: '/',
-}, {
-  name: 'Articles',
-  href: '/articles',
-}, {
-  name: 'My Works',
-  href: '/my-works',
-}, {
-  name: 'Resume',
-  href: '/resume',
-},  {
-  name: 'Contact',
-  href: '/#contact',
-},];
-
+import SidebarControl from "../components/Sidebar/Control.astro";
+import { routes } from "../constants";
+import Sidebar from "./Sidebar/Sidebar.astro";
 const {pathname} = new URL(Astro.request.url);
 ---
 
-<div class="flex justify-between items-center py-8">
-  <div class="flex items-center gap-8">
-    {routes.map(({name, href}) => <a class={`block py-1.5 px-3 rounded-md hover:bg-dark-200 ${href === pathname && 'bg-dark-200'}`} href={href}>{name}</a>)}
+<div class="flex justify-between items-center py-4 h-20 xl:mt-10">
+  <div class="hidden md:flex items-center gap-8">
+    {routes.map(({name, href}) => <a class={`block py-1.5 px-3 rounded-md hover:bg-light-200 dark:hover:bg-dark-200 ${href === pathname && 'dark:bg-dark-200 bg-light-200'}`} href={href}>{name}</a>)}
   </div>
+  <SidebarControl />
+  <Sidebar />
   <ModeToggler client:load />
 </div>

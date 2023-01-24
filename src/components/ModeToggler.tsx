@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { BsSun, BsMoon } from "react-icons/bs/index";
 
 export default function ModeToggler() {
   const [theme, setTheme] = useState(localStorage.getItem("theme") ?? "dark");
@@ -17,5 +18,12 @@ export default function ModeToggler() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  return <button onClick={handleClick}>{theme}</button>;
+  return (
+    <button
+      className="hover:bg-light-200 dark:hover:bg-dark-200 flex h-10 w-10 rounded-md active:scale-90 justify-center items-center"
+      onClick={handleClick}
+    >
+      {theme === "light" ? <BsMoon /> : <BsSun />}
+    </button>
+  );
 }

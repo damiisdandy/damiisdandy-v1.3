@@ -1,0 +1,39 @@
+---
+
+---
+
+<div id="sidebar-control" class="flex md:hidden flex-col items-center justify-center gap-1 hover:bg-light-200 dark:hover:bg-dark-200 w-10 h-10 rounded-md">
+  <div class="top-line transition-all bg-[#444] dark:bg-light-200"></div>
+  <div class="bottom-line transition-all bg-[#444] dark:bg-light-200"></div>
+</div>
+
+<script>
+  const sidebarControl = document.getElementById('sidebar-control');
+  const sidebar = document.getElementById('sidebar');
+  const handleClick = () => {
+    sidebarControl?.classList.toggle("active");
+    // <Sidebar/>
+    sidebar?.classList.toggle("active");
+  }
+  sidebarControl?.addEventListener("click", handleClick);
+</script>
+
+<style lang="scss">
+  .top-line, .bottom-line {
+    width: 55%;
+    height: 2px;
+    border-radius: 2px;
+    transform-origin: center;
+  }
+
+  .active {
+    gap: 0px;
+    .top-line {
+      transform: rotateZ(45deg);
+      margin-bottom: -2px;
+    }
+    .bottom-line {
+      transform: rotateZ(-45deg);
+    }
+  }
+</style>
