@@ -1,0 +1,59 @@
+---
+import type { IconType } from "react-icons";
+import { BsTwitter, BsLinkedin, BsGithub } from "react-icons/bs/index";
+import { FaDev } from "react-icons/fa/index";
+import { MdEmail } from "react-icons/md/index";
+import { socials } from "../constants";
+
+type SocialLink = {
+  icon: IconType;
+  url: string;
+};
+const socialLinks = [
+  {
+    icon: BsTwitter,
+    url: socials.twitter,
+  },
+  {
+    icon: BsGithub,
+    url: socials.github,
+  },
+  {
+    icon: BsLinkedin,
+    url: socials.linkedin,
+  },
+  {
+    icon: FaDev,
+    url: socials.dev,
+  },
+  {
+    icon: MdEmail,
+    url: socials.email,
+  },
+];
+---
+
+<footer
+  class="h-10 flex items-center justify-between border-t-2 border-light-200 dark:border-dark-200"
+>
+  <div class="flex items-center gap-4 md:gap-6">
+    {
+      socialLinks.map(({ icon: Icon, url }) => (
+        <a
+          class="text-grey-text hover:text-black dark:hover:text-white"
+          href={url}
+        >
+          <Icon />
+        </a>
+      ))
+    }
+  </div>
+  <p class="text-sm text-grey-text">
+    &copy; damiisdandy <span id="copy-date"></span>
+  </p>
+</footer>
+
+<script>
+  const copyDate = document.getElementById("copy-date");
+  if (copyDate) copyDate.innerText = new Date().getFullYear().toString();
+</script>

@@ -2,8 +2,17 @@
 import { routes } from "../../constants";
 ---
 
-<div id="sidebar" class="dark:text-white text-black md:hidden h-[calc(100vh-theme(space.20))] w-screen fixed bottom-0 -left-full bg-light-100 dark:bg-dark-100 px-4 pt-6 transition-[left] duration-300">
-  {routes.map(({name, href}) => <a class="block py-4 text-xl border-b-dark-300 border-b-2 " href={href}>{name}</a>)}
+<div
+  id="sidebar"
+  class="dark:text-white text-black md:hidden h-[calc(100vh-theme(space.20))] w-screen fixed z-30 bottom-0 -left-full bg-light-100 dark:bg-dark-100 px-4 pt-6 transition-[left] duration-300"
+>
+  {
+    routes.map(({ name, href }) => (
+      <a class="block py-4 text-xl border-b-dark-300 border-b-2 " href={href}>
+        {name}
+      </a>
+    ))
+  }
 </div>
 
 <style lang="scss">

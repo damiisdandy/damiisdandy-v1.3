@@ -4,29 +4,31 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <Layout title="Home">
-  <div class="flex items-center gap-16 flex-nowrap">
-    <div class="">
-      <h1 class="font-semibold md:text-3xl">Damilola Jerugba</h1>
+  <div
+    class="flex md:flex-row flex-col items-center gap-8 md:gap-16 flex-nowrap"
+  >
+    <div class="order-2 md:order-1">
+      <h1 class="font-semibold text-3xl">Damilola Jerugba</h1>
       <p class="text-lg mt-1">Fullstack developer ⚡️</p>
       <p class="text-grey-text mt-2">
         👋🏾 Hi, my name is Damilola, I'm a <b>Developer</b> with a Bachelor of Engineering
-        and i've got a passion for building stuff with code. I help teams grow and
-        companies reach desired goals with clean, maintainable, and scalable code.
-        I love to grow as a developer and share my knowledge through the <a
+        and i've got a passion for building stuff with code. I love to grow as a
+        developer and share my knowledge through the <a
           href="/articles"
-          class="link">articles I publish 📖.</a
+          class="link">articles I write 📖.</a
         >
       </p>
     </div>
     <div
-      class="flex items-center justify-center flex-shrink-0 w-48 h-48 border-2 rounded-full border-brand-blue dark:border-brand-yellow"
+      class="order-1 md:order-2 flex p-1 items-center justify-center flex-shrink-0 w-48 h-48 border-4 rounded-full border-brand-blue dark:border-brand-yellow"
     >
       <Image
-        width={300}
-        height={300}
+        class="rounded-full"
+        width={400}
+        height={400}
         src="/images/portrait.jpg"
         alt="Damilola Jerugba"
-        aspectRatio={1}
+        fit="cover"
       />
     </div>
   </div>
