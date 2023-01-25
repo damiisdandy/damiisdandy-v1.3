@@ -1,35 +1,114 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Image } from "@astrojs/image/components";
+
+type Skill = {
+  name: string;
+  image: string;
+  description: string;
+  tools: string[];
+};
+
+const skills: Skill[] = [
+  {
+    name: "Frontend Development",
+    image: "/images/memoji/frontend.png",
+    description:
+      "I build blazingly fast ⚡️, beautiful, SEO friendly frontend applications that suites your every need.",
+    tools: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Vue", "SCSS"],
+  },
+  {
+    name: "Backend Development",
+    image: "/images/memoji/backend.png",
+    description:
+      "I build scalable, optimized, efficient ⚙️ backend applications powered by the latest technologies.",
+    tools: [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Django",
+      "Rust",
+      "Express",
+      "tRPC",
+      "PostgreSQL",
+      "MySQL",
+      "MongoDB",
+      "AWS",
+    ],
+  },
+  {
+    name: "Technical Writing",
+    image: "/images/memoji/articles.png",
+    description:
+      "I learn new technologies and concepts every day, and I love sharing my knowledge with others. I write comprehensive dev articles for multiple companies.",
+    tools: [],
+  },
+  {
+    name: "Scripting/CLIs",
+    image: "/images/memoji/scripting.png",
+    description:
+      "I write scripts and build bots to perform any task needed. I even once built a bot to help me select a random video from my laptop for when I want to eat and watch 🤡.",
+    tools: ["bash", "Rust", "Node", "Python", "Arduino"],
+  },
+];
 ---
 
 <Layout title="Home">
-  <div
-    class="flex md:flex-row flex-col items-center gap-8 md:gap-16 flex-nowrap"
-  >
-    <div class="order-2 md:order-1">
-      <h1 class="font-semibold text-3xl">Damilola Jerugba</h1>
-      <p class="text-lg mt-1">Fullstack developer ⚡️</p>
-      <p class="text-grey-text mt-2">
-        👋🏾 Hi, my name is Damilola, I'm a <b>Developer</b> with a Bachelor of Engineering
-        and i've got a passion for building stuff with code. I love to grow as a
-        developer and share my knowledge through the <a
-          href="/articles"
-          class="link">articles I write 📖.</a
-        >
-      </p>
-    </div>
+  <div class="flex flex-col gap-12">
     <div
-      class="order-1 md:order-2 flex p-1 items-center justify-center flex-shrink-0 w-48 h-48 border-4 rounded-full border-brand-blue dark:border-brand-yellow"
+      class="flex md:flex-row flex-col items-center gap-8 md:gap-16 flex-nowrap"
     >
-      <Image
-        class="rounded-full"
-        width={400}
-        height={400}
-        src="/images/portrait.jpg"
-        alt="Damilola Jerugba"
-        fit="cover"
-      />
+      <div class="order-2 md:order-1">
+        <h1 class="font-semibold text-3xl">Damilola Jerugba</h1>
+        <p class="text-lg mt-1">Fullstack developer ⚡️</p>
+        <p class="dark:text-light-200 text-dark-200 mt-2">
+          👋🏾 Hi, my name is Damilola, I'm a <b>Developer</b> with a Bachelor of Engineering
+          and i've got a passion for building stuff with code and obsessed with DX
+          (Developer Experience). I love to grow as a developer and share my knowledge
+          through the <a href="/articles" class="link">articles I write 📖.</a>
+        </p>
+      </div>
+      <div
+        class="order-1 md:order-2 flex p-1 items-center justify-center flex-shrink-0 w-48 h-48 border-4 rounded-full border-brand-blue dark:border-brand-yellow"
+      >
+        <Image
+          class="rounded-full"
+          width={400}
+          height={400}
+          src="/images/portrait.jpg"
+          alt="Damilola Jerugba"
+          fit="cover"
+        />
+      </div>
+    </div>
+    <div>
+      <h1 class="text-center text-3xl font-bold">What I Do</h1>
+      <div class="grid gap-6 p-3 grid-rows-1 grid-cols-2">
+        {
+          skills.map(({ image, name, description, tools }) => (
+            <div class="p-4 rounded-lg shadow-lg  transition hover:shadow-xl dark:hover:shadow-2xl dark:shadow-2xl">
+              <Image
+                src={image}
+                class="block mx-auto my-0 w-1/2 transform transition hover:scale-105"
+                alt="memoji with hearts around his face"
+                width={300}
+                height={300}
+                aspectRatio={1}
+                fit="cover"
+              />
+              <p class="font-bold text-xl text-center my-2">{name}</p>
+              <p class="dark:text-light-200 text-dark-200">{description}</p>
+              <div class="mt-4 flex items-center gap-2 flex-wrap">
+                {tools.map((tool) => (
+                  <p class="text-xs px-2 py-0.5 rounded-md font-mono hover:bg-brand-blue dark:hover:bg-brand-yellow dark:hover:text-black hover:text-white cursor-pointer dark:bg-dark-300 bg-light-200">
+                    {tool}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
   </div>
 </Layout>
