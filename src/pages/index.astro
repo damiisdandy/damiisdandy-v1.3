@@ -1,8 +1,33 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "@astrojs/image/components";
 ---
 
 <Layout title="Home">
-	<p>Home page</p>
+  <div class="flex items-center gap-16 flex-nowrap">
+    <div class="">
+      <h1 class="font-semibold md:text-3xl">Damilola Jerugba</h1>
+      <p class="text-lg mt-1">Fullstack developer ⚡️</p>
+      <p class="text-grey-text mt-2">
+        👋🏾 Hi, my name is Damilola, I'm a <b>Developer</b> with a Bachelor of Engineering
+        and i've got a passion for building stuff with code. I help teams grow and
+        companies reach desired goals with clean, maintainable, and scalable code.
+        I love to grow as a developer and share my knowledge through the <a
+          href="/articles"
+          class="link">articles I publish 📖.</a
+        >
+      </p>
+    </div>
+    <div
+      class="flex items-center justify-center flex-shrink-0 w-48 h-48 border-2 rounded-full border-brand-blue dark:border-brand-yellow"
+    >
+      <Image
+        width={300}
+        height={300}
+        src="/images/portrait.jpg"
+        alt="Damilola Jerugba"
+        aspectRatio={1}
+      />
+    </div>
+  </div>
 </Layout>
-
